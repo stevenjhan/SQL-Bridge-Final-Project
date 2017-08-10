@@ -54,6 +54,7 @@ CREATE TABLE IF NOT EXISTS EnergyTypes
     CONSTRAINT FOREIGN KEY (category_id)
     REFERENCES EnergyCategories(category_id)
     ON DELETE SET NULL
+    ON UPDATE CASCADE
 );
 
 INSERT INTO EnergyTypes
@@ -112,10 +113,12 @@ CREATE TABLE IF NOT EXISTS BuildingInfo
     type_id VARCHAR(30) NOT NULL,
     CONSTRAINT FOREIGN KEY (building_id)
     REFERENCES Buildings(building_id)
-    ON DELETE CASCADE,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
     CONSTRAINT FOREIGN KEY (type_id)
     REFERENCES EnergyTypes(type_id)
     ON DELETE CASCADE
+    ON UPDATE CASCADE
 );
 
 INSERT INTO BuildingInfo
@@ -216,3 +219,28 @@ FROM BuildingEnergy
 GROUP BY `Energy Type`
 
 ORDER BY `Usage` DESC, `Energy Type`;
+
+/*
+9a. Create the appropriate foreign key constraints.
+
+FOREIGN KEY CONSTRAINTS added to the EnergyTypes and BuildingInfo tables.
+
+If a category is deleted from the EnergyCategories table, then the corresponding category ID in the EnergyTypes table is set as NULL. If
+the category ID is updated in the EnergyCategories table, it is also updated witin the EnergyTypes table. 
+
+If a building ID or energy type ID is deleted from the Buildings and EnergyTypes tables, respectively, then the row where that ID
+is found in the BuildingInfo table is deleted. Likewise, if these IDs are updated, they are likewise updated within the BuildingInfo table.
+
+9b. Create an entity relationship (ER) diagram for the tables in the database. You can sketch this by hand and
+include a photo or scan if you wish.
+
+9c. Suppose you wanted to design a set of HTML pages to manage (add, edit, and delete) the information in the
+various database tables; create a mockup of the user interface (on paper or using a package like Balsamiq
+Mockups).
+
+9d. Suppose you want to track changes over time in energy type preferences in New York City buildings. What
+information should you add to each table? What might a report that shows the trends over time look like?
+
+
+
+*/
