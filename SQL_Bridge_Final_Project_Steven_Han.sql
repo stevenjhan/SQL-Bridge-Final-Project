@@ -234,13 +234,6 @@ is found in the BuildingInfo table is deleted. Likewise, if these IDs are update
 9b. Create an entity relationship (ER) diagram for the tables in the database. You can sketch this by hand and
 include a photo or scan if you wish.
 
-9c. Suppose you wanted to design a set of HTML pages to manage (add, edit, and delete) the information in the
-various database tables; create a mockup of the user interface (on paper or using a package like Balsamiq
-Mockups).
-
-9d. Suppose you want to track changes over time in energy type preferences in New York City buildings. What
-information should you add to each table? What might a report that shows the trends over time look like?
-
-
+https://github.com/stevenjhan/SQL-Bridge-Final-Project/blob/master/buildingenergy_ERD.png
 
 */
